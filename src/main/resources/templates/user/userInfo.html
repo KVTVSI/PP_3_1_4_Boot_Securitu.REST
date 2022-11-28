@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            margin: auto;
+            width: 500px;
+            border: 2px solid;
+            border-radius: 40px;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: center;
+            font-size: 24px;
+            color: #1d3f5a;
+            background: #d4e6f7;
+            padding: 5px;
+            border: 2px solid #87c0e9;
+            width: 150px;
+        }
+
+        td {
+            font-size: 22px;
+            text-align: left;
+            color: #1d3f5a;
+            padding: 5px;
+            border: 2px solid #87c0e9;
+            width: 500px;
+        }
+
+        h2 {
+            border-radius: 50px;
+            border-style: solid;
+            border-color: #88c2ea;
+            background: #d6e8f8;
+            color: #1d3f5a;
+            width: 300px;
+            margin: auto;
+            padding: 5px;
+        }
+
+        input {
+            color: #1d3f5a;
+            background: #d2e4f6;
+            border-color: #88c2ea;
+            font-size: 20px;
+
+        }
+    </style>
+
+</head>
+<body>
+<div style="text-align: center;">
+    <h2>Ваш профиль</h2>
+    <br>
+    <table>
+        <tr>
+            <th>Почта</th>
+            <td th:text="${user.getEmail()}"/>
+        <tr>
+            <th>Имя</th>
+            <td th:text="${user.getName()}"/>
+        </tr>
+        <tr>
+            <th>Фамилия</th>
+            <td th:text="${user.getLastName}"/>
+        </tr>
+    </table>
+    <br>
+    <form th:method="GET"
+          th:action="@{/user/edit}">
+        <input type="submit" value="Изменить профиль">
+    </form>
+    <form style=" display: inline-block; width: 200px;" th:method="GET" th:action="@{/logout}">
+        <br>
+        <input type="submit" value="Выйти из аккаунта">
+        <br><br>
+    </form>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователи</title>
+    <style>
+        table {
+            margin: auto;
+            width: 1000px;
+            border: 2px solid;
+            border-radius: 40px;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            font-size: 24px;
+            color: #1d3f5a;
+            background: #d4e6f7;
+            padding: 5px;
+            border: 2px solid #87c0e9;
+        }
+
+        td {
+            font-size: 22px;
+            text-align: left;
+            color: #1d3f5a;
+            padding: 5px;
+            border: 2px solid #87c0e9;
+        }
+
+        h2 {
+            border-radius: 50px;
+            border-style: solid;
+            border-color: #88c2ea;
+            background: #d6e8f8;
+            color: #1d3f5a;
+            width: 300px;
+            margin: auto;
+            padding: 5px;
+        }
+
+        input {
+            color: #1d3f5a;
+            background: #d2e4f6;
+            border-color: #88c2ea;
+            font-size: 20px;
+
+        }
+    </style>
+</head>
+<body>
+<div style="text-align: center;">
+    <h2>Список пользователей</h2>
+    <br>
+    <form style="display: inline" th:method="GET"
+           th:action="@{/admin/new}">
+    <input type="submit" value="Добавить нового пользователя">
+</form>
+    <br>
+    <br>
+    <table>
+        <tr>
+            <th>Email</th>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Роли</th>
+            <th style="text-align: center; width: 205px">Действия</th>
+        </tr>
+        <tr th:each="users: ${users}">
+            <td th:text="${users.getEmail()}"/>
+            <td th:text="${users.getName()}"/>
+            <td th:text="${users.getLastName()}"/>
+            <td>
+                <div th:each="role:${users.getRole()}">[[${role.getRole().substring(5)}]]</div>
+            </td>
+
+            <td style="text-align: center">
+                <form style="display: inline" th:method="GET"
+                      th:action="@{/admin/{id}/edit(id=${users.getId()})}">
+                    <input type="submit" value="Изменить">
+                </form>
+                <form style="display: inline" th:method="DELETE"
+                      th:action="@{/admin/{id}(id=${users.getId()})}">
+                    <input type="submit" value="Удалить">
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <form style="display: inline-block; width: 200px;" th:method="GET" th:action="@{/logout}">
+        <br>
+        <input type="submit" value="Выйти из аккаунта">
+        <br><br>
+    </form>
+
+</div>
+</body>
+</html>

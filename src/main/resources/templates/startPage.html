@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Стартовая страница</title>
+    <style>
+        form {
+            border-radius: 50px;
+            border-style: solid;
+            border-color: #88c2ea;
+            background: #d6e8f8;
+            color: #1d3f5a;
+            width: 300px;
+        }
+
+        input {
+            color: #1d3f5a;
+            background: #d2e4f6;
+            border-color: #88c2ea;
+            font-size: 20px;
+
+        }
+    </style>
+</head>
+<body>
+<div style="text-align: center;">
+    <form sec:authorize="isAuthenticated()" style="display: inline-block; text-align: center" action="/logout">
+        <br>
+        <input type="submit" value="Выйти"/>
+        <br><br>
+    </form>
+</div>
+<br>
+<div style="text-align: center">
+    <form sec:authorize="hasRole('ROLE_ADMIN')" style="display: inline-block; text-align: center" action="/admin">
+        <br>
+        <input type="submit" value="Панель администратора"/>
+        <br><br>
+    </form>
+</div>
+<br>
+<div style="text-align: center">
+    <form sec:authorize="!isAuthenticated()" style="display: inline-block; text-align: center" th:action="@{/login}"
+          th:method="GET">
+        <br>
+        <input type="submit" value="Войти"/>
+        <br><br>
+    </form>
+</div>
+<br>
+<div style="text-align: center">
+    <form sec:authorize="!isAuthenticated()" style="display: inline-block; text-align: center" action="/registration">
+        <br>
+        <input type="submit" value="Регистрация"/>
+        <br><br>
+    </form>
+</div>
+</body>
+</html>
