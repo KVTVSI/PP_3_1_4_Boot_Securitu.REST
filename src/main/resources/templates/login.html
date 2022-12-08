@@ -1,70 +1,50 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/">
+<!doctype html>
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <style>
-        h2 {
-            border-radius: 50px;
-            border-style: solid;
-            border-color: #88c2ea;
-            background: #d6e8f8;
-            color: #1d3f5a;
-            width: 400px;
-            margin: auto;
-        }
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        input {
-            font-size: 20px;
 
-        }
 
-        label {
-            width: 100px;
-            display: inline-block;
-            margin: 4px;
-            text-align: right;
-            font-size: 10px;
-        }
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
-        form {
-            border-radius: 50px;
-            border-style: solid;
-            border-color: #88c2ea;
-            background: #d6e8f8;
-            color: #1d3f5a;
-            width: 500px;
-        }
-    </style>
+    <title>Вход</title>
+
+    <link type="text/css" rel="stylesheet" href="/static/css/valid.css" th:href="@{/css/valid.css}">
 </head>
 <body>
 
-<div style="text-align: center;">
-
-    <h2>Введите данные</h2>
-    <br>
-
-    <form style="display: inline-block" th:method="POST" th:action="@{/login}">
-        <br><br>
-        <label for="username"><h1>Почта: </h1></label>
-        <input type="text" name="username" id="username" autofocus="autofocus">
-        <br><br>
-        <label for="password"><h1>Пароль: </h1></label>
-        <input type="password" name="password" id="password">
-        <br><br>
-        <input type="submit" value="Войти">
-        <br><br>
-    </form>
-
-</div>
-<br>
-<div style="text-align: center;">
-    <form style="display: inline-block; width: 200px;" th:method="GET" th:action="@{/}">
-        <br>
-        <input type="submit" value="Вернуться">
-        <br><br>
-    </form>
+<div style="box-sizing:content-box;text-align: center">
+    <div style="width: 300px; padding-top: 50px;margin: 0 auto; text-align: left">
+        <h2><b>Please sign in</b></h2>
+    </div>
+    <div>
+        <form th:method="POST" th:action="@{/login}">
+            <input required name="username" type="email" class="form-control" placeholder="Email address"/>
+            <input required minlength="8" name="password" type="password" class="form-control" placeholder="Password"/>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+        </form>
+    </div>
 </div>
 
+<!-- Дополнительный JavaScript; выберите один из двух! -->
+
+<!-- Вариант 1: пакет jQuery и Bootstrap (включает Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+        crossorigin="anonymous"></script>
+
+<!-- Вариант 2: Отдельные JS для Popper и Bootstrap -->
+<!--
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+-->
 </body>
 </html>

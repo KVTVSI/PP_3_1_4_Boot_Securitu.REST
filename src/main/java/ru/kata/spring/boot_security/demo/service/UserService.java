@@ -12,6 +12,8 @@ public interface UserService extends UserDetailsService {
 
     void addUser(User user);
 
+    void updateUser(User user, String password);
+
     User getUser(Long id);
 
     List<User> getAllUsers();

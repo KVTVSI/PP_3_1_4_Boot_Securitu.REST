@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+    <link type="text/css" rel="stylesheet" href="/static/css/valid.css" th:href="@{/css/admin.css}">
+
+    <title> Профиль </title>
+
+</head>
+<body>
+
+<!-- Верхняя панель  -->
+
+<nav class="navik navbar sticky-top navbar-expand-lg navbar-light">
+    <div style="color:#fdfdfe" class="container-fluid">
+        <div class="navbar-collapse" id="navbarText">
+            <span style="font-weight: bold;" th:text="${user.getEmail()}"/>
+            <span>with roles: </span>
+            <span style="font-weight: bold" th:each="roles : ${user.getRoles()}"
+                  th:text="${roles.getRole().substring(5)}"/>
+        </div>
+        <a style="color: #949991;font-size: 25px" class="nav-link" href="/logout">Logout</a>
+    </div>
+</nav>
+
+<!-- Основная часть  -->
+
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div style="background-color: #fdfdfe; width: 15%">
+            <div class="d-flex flex-column align-items-center align-items-sm-start text-white min-vh-100">
+
+                <!-- Левая панель  -->
+
+                <nav style="display: block; width: 100%; padding-top: 10px" class="nav nav-pills" id="pills-tab"
+                     role="tablist">
+                    <a class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" href="#pills-user" role="tab"
+                       aria-controls="pills-home" aria-selected="true">User</a>
+                </nav>
+
+            </div>
+        </div>
+        <!-- Содержимое кнопки с левой панели -->
+        <div style="background-color: #f6f7f9" class="col py-3">
+            <div class="tab-content" id="pills-tabContent">
+                <!-- Содержимое кнопки User -->
+                <div class="tab-pane fade show active" id="pills-user" role="tabpanel" aria-labelledby="pills-home-tab">
+
+                    <h1>User information-page</h1>
+
+                    <div class="card">
+                        <div class="card-header">
+                            About user
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">First Name</th>
+                                    <th scope="col">Last Name</th>
+                                    <th scope="col">Age</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Role</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:object="${user}">
+                                    <td th:text="${user.getId()}"/>
+                                    <td th:text="${user.getName()}"/>
+                                    <td th:text="${user.getLastName()}"/>
+                                    <td th:text="${user.getAge()}"/>
+                                    <td th:text="${user.getEmail()}"/>
+                                    <td>
+                                        <div style="display: inline-block" th:each="role:${user.getRoles()}">
+                                            [[${role.getRole().substring(5)}]]
+                                        </div>
+                                    </td>
+                                    <td/>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+</body>
+</html>
