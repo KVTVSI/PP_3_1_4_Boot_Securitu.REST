@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface UserService extends UserDetailsService {
 
-    void addUser(User user);
+    boolean addUser(User user);
 
     void updateUser(User user, String password);
 
@@ -18,6 +18,6 @@ public interface UserService extends UserDetailsService {
 
     List<User> getAllUsers();
 
-    void deleteUser(Long id);
+    boolean deleteUser(Long id);
 
 }

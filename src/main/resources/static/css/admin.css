@@ -19,3 +19,8 @@ input:focus:valid {
 input:focus:invalid {
     box-shadow: 0 0 6px red;
 }
+div.modal-body {
+    text-align: center;
+    display: inline-block
+
+}

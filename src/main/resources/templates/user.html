@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
           integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
+    <link rel="icon" type="image/x-icon" href="/icon/favicon.ico">
+    <link rel="shotcut icon" type="image/x-icon" href="/icon/favicon.ico?v=1">
+
     <link type="text/css" rel="stylesheet" href="/static/css/valid.css" th:href="@{/css/admin.css}">
 
     <title> Профиль </title>
@@ -21,10 +24,9 @@
 <nav class="navik navbar sticky-top navbar-expand-lg navbar-light">
     <div style="color:#fdfdfe" class="container-fluid">
         <div class="navbar-collapse" id="navbarText">
-            <span style="font-weight: bold;" th:text="${user.getEmail()}"/>
+            <span style="font-weight: bold;" id="userEmail"></span>
             <span>with roles: </span>
-            <span style="font-weight: bold" th:each="roles : ${user.getRoles()}"
-                  th:text="${roles.getRole().substring(5)}"/>
+            <span style="font-weight: bold" id="userRole"></span>
         </div>
         <a style="color: #949991;font-size: 25px" class="nav-link" href="/logout">Logout</a>
     </div>
@@ -60,7 +62,7 @@
                             About user
                         </div>
                         <div class="card-body">
-                            <table class="table table-striped">
+                            <table class="table table-striped" id="userTable">
                                 <thead>
                                 <tr>
                                     <th scope="col">ID</th>
@@ -72,19 +74,6 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:object="${user}">
-                                    <td th:text="${user.getId()}"/>
-                                    <td th:text="${user.getName()}"/>
-                                    <td th:text="${user.getLastName()}"/>
-                                    <td th:text="${user.getAge()}"/>
-                                    <td th:text="${user.getEmail()}"/>
-                                    <td>
-                                        <div style="display: inline-block" th:each="role:${user.getRoles()}">
-                                            [[${role.getRole().substring(5)}]]
-                                        </div>
-                                    </td>
-                                    <td/>
-                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -99,6 +88,8 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
+
+<script src="/JS/user.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
